@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-// Adapter for holding devices found through scanning.存放所发现的设备的适配器
+// Adapter for holding devices found through scanning.
 public class LeDeviceListAdapter extends BaseAdapter {
     private ArrayList<BluetoothDevice> mLeDevices;  //(mLeDevices 存储扫描到的蓝牙设备)
 
@@ -70,13 +70,12 @@ public class LeDeviceListAdapter extends BaseAdapter {
             viewHolder.deviceName = (TextView) view.findViewById(R.id.device_name);
 
             view.setTag(viewHolder);
-            //View中的setTag（Onbect）表示给View 添加一个格外的数据，
-            // 以后可以用getTag()将这个数据取出来。
+            
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
 
-        BluetoothDevice device = mLeDevices.get(i);     //？？？get的是什么？是设备列表的第i个设备。
+        BluetoothDevice device = mLeDevices.get(i);     
         final String sDeviceName = device.getName();
         //get in connect immediately when right device is found   Yini
         if (sDeviceName != null && sDeviceName.length() > 0)
