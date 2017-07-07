@@ -1,0 +1,157 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ap="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#d5d6da"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_device_address"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp"/>
+
+        <Space android:layout_width="5dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView android:id="@+id/device_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_state"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp"/>
+
+        <Space android:layout_width="5dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView android:id="@+id/connection_state"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="@string/disconnected"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/isSerial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/is_serial"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+    <!--
+    <com.jjoe64.graphview.GraphView
+        android:layout_width="match_parent"
+        android:layout_height="200dip"
+        android:id="@+id/graph" />
+-->
+    <com.androidplot.xy.XYPlot
+        android:id="@+id/plot"
+        android:layout_width="match_parent"
+        android:layout_height="308dp"
+        ap:label="A Simple XY Plot"
+        ap:rangeLabel="range"
+        ap:domainLabel="domain"
+        ap:borderColor="#000000"
+        ap:backgroundColor="#000000"
+        ap:graphBackgroundColor="#000000"
+        ap:gridBackgroundColor="#111111"
+        ap:gridPaddingLeft="120dp"
+        ap:gridPaddingRight="30dp"
+        ap:gridPaddingTop="30dp"
+        ap:gridPaddingBottom="80dp"
+        ap:labelTextSize="20sp"
+        ap:rangeLabelTextSize="23sp"
+        ap:domainLabelTextSize="23sp"
+        ap:graphMarginTop="0dp"
+        ap:graphMarginBottom="0dp"
+        ap:graphMarginLeft="0dp"
+        ap:graphMarginRight="0dp"
+        ap:graphDomainLineColor="#FFFFFF"
+        ap:graphDomainLineThickness="1dp"
+        ap:graphRangeLineColor="#FFFFFF"
+        ap:graphRangeLineThickness="1dp"
+        ap:rangeTickLabelTextSize="15sp"
+        ap:rangeOriginTickLabelTextSize="15sp"
+        ap:domainTickLabelTextSize="15sp"
+        ap:domainOriginTickLabelTextSize="15sp"
+        ap:legendTextSize="30sp"
+        ap:legendIconHeight="20dp"
+        ap:legendIconWidth="20dp"
+        ap:legendHeight="35dp"
+        ap:legendAnchorPosition="right_bottom"
+        android:nestedScrollingEnabled="false"
+        android:clickable="false" />
+
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/data_received"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:maxLines="1"
+            android:scrollbars = "vertical"
+            android:gravity="bottom" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_open"
+            android:textSize="22sp"
+            android:id="@+id/btn_open_connection"
+            android:layout_weight="3" />
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_weight="2"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Pause"
+            android:textSize="22sp"
+            android:id="@+id/btn_stop_test"
+            android:layout_weight="3" />
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+</LinearLayout>
