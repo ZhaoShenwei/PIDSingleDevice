@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity  {
     private Handler mHandler;
     private ListView listView;
     private static final int REQUEST_ENABLE_BT = 1;
-    //Stops scanning after 10 seconds.
-    //private static final long SCAN_PERIOD = 10000;
     private static final long SCAN_PERIOD = 2000;
 
     @Override
@@ -117,13 +115,11 @@ public class MainActivity extends AppCompatActivity  {
         }
 
         // Initializes list view adapter.
-        mLeDeviceListAdapter = new LeDeviceListAdapter(MainActivity.this);      //扫描到的设备的列表
-        listView.setAdapter(mLeDeviceListAdapter);          //将控件和数据对应起来了
+        mLeDeviceListAdapter = new LeDeviceListAdapter(MainActivity.this);    
+        listView.setAdapter(mLeDeviceListAdapter);         
         scanLeDevice(true);
 
-/**************   选择设备后，将跳转到数据活动  ****************/
-        // When the listView item is clicked, start the data activity (DeviceControlActivity)
-        // listView的监听器（哪个设备被选中了，就跳到deviceControl）
+        
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
@@ -132,28 +128,20 @@ public class MainActivity extends AppCompatActivity  {
                 if (device == null) return;
 
                 final Intent intent = new Intent(MainActivity.this, DeviceControlActivity.class);
-                //定义了intent
-                //putExtra("A",B) 中，AB 为键值对， 第一个参数为键名， 第二个参数为键对应的值。
-
-
-                /***通过intent，将mainActivity中的device的name和address传给deviceControl，****/
+               
                 intent.putExtra(DeviceControlActivity.EXTRAS_DEVICE_NAME, device.getName());
                 intent.putExtra(DeviceControlActivity.EXTRAS_DEVICE_ADDRESS, device.getAddress());
                 if (mScanning) {
-                  //  mBluetoothAdapter.
-                    /*****师姐写的是startLeScan（），例子是stopLeScan*****/
+                 
                     mBluetoothAdapter.startLeScan(mLeScanCallback);
                     mScanning = false;
                 }
-                startActivity(intent);  //跳转到deviceControlActivity
+                startActivity(intent);  
             }
         });
-        /***********************   选择拉压设备后，将跳转到数据活动  ************************/
+      
     }
 
-
-
-    //子activity完成后，带回数据给主activity，需要回调该方法
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // User chose not to enable Bluetooth.
@@ -164,7 +152,7 @@ public class MainActivity extends AppCompatActivity  {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-//暂停activity时，被回调（如果暂停，则结束一切活动）
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -191,11 +179,7 @@ public class MainActivity extends AppCompatActivity  {
             mBluetoothAdapter.stopLeScan(mLeScanCallback);
         }
         invalidateOptionsMenu();
-        //在运行时更改选项菜单
-        //随时动态改变OptionMenu，就要实现onPrepareOptionsMenu() 方法
-    }
-
-    // Device scan callback.
+       
     private BluetoothAdapter.LeScanCallback mLeScanCallback =
             new BluetoothAdapter.LeScanCallback() {
                 @Override
